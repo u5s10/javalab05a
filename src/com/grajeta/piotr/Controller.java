@@ -10,8 +10,8 @@ public class Controller {
     }
 
     public void createMatrices(int rows, int colums){
-        this.model.matrixA = new int[rows][colums];
-        this.model.matrixB = new int[colums][rows];
+        this.model.setMatrixA(new int[rows][colums]);
+        this.model.setMatrixB(new int[colums][rows]);
     }
 
     public void populateMatrixA(int row, int column, int number){
@@ -26,7 +26,7 @@ public class Controller {
     }
 
     public void calculateMatrixC(){
-        this.model.matrixC = multiplyAandB(this.model.matrixA, this.model.matrixB);
+        this.model.setMatrixC(multiplyAandB(this.model.getMatrixA(), this.model.getMatrixB()));
     }
     public static int[][] multiplyAandB(int[][] A, int[][] B) {
 
@@ -54,12 +54,12 @@ public class Controller {
     }
 
     public void transponeInputMatrices(){
-        this.model.matrixA = transposeMatrix(this.model.matrixA);
-        this.model.matrixB = transposeMatrix(this.model.matrixB);
+        this.model.setMatrixA(transposeMatrix(this.model.getMatrixA()));
+        this.model.setMatrixB(transposeMatrix(this.model.getMatrixB()));
     }
 
     public void transponeOutputMatix(){
-        this.model.matrixC = transposeMatrix(this.model.matrixC);
+        this.model.setMatrixC(transposeMatrix(this.model.getMatrixC()));
     }
 
     public static int[][] transposeMatrix(int [][] m){

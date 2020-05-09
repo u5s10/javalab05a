@@ -97,7 +97,6 @@ public class View {
             }
         }
         scanner.close();
-
     }
 
     private static void check(Scanner scanner) {
@@ -130,7 +129,7 @@ public class View {
         int[][] matrixA = this.controller.getModel().getMatrixA();
         int[][] matrixB = this.controller.getModel().getMatrixB();
         int rows = this.controller.getModel().getMatrixA().length;
-        int columns = this.controller.getModel().matrixA[0].length;
+        int columns = this.controller.getModel().getMatrixA()[0].length;
 
         System.out.println("Macierz A:");
         for (int i = 0; i < rows; i++) {
@@ -153,7 +152,7 @@ public class View {
     public void showMatrixC() {
         int[][] matrixC = this.controller.getModel().getMatrixC();
         int rows = this.controller.getModel().getMatrixC().length;
-        int columns = this.controller.getModel().matrixC[0].length;
+        int columns = this.controller.getModel().getMatrixC()[0].length;
 
         System.out.println("Macierz C:");
         for (int i = 0; i < rows; i++) {

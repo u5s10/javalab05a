@@ -1,9 +1,9 @@
 package com.grajeta.piotr;
 
 public class Model {
-    int[][] matrixA;
-    int[][] matrixB;
-    int[][] matrixC;
+    private int[][] matrixA;
+    private int[][] matrixB;
+    private int[][] matrixC;
 
     public int[][] getMatrixA() {
         return matrixA;
