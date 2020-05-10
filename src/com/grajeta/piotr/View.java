@@ -56,30 +56,29 @@ public class View {
                     if (inputString.equals("1")) {
                         if (controller.getModel().getMatrixA() == null) {
                             System.err.println("Brak macierzy A i B");
-                            continue;
                         } else
                             controller.transponeInputMatrices();
                     } else if (inputString.equals("2")) {
                         if (controller.getModel().getMatrixA() == null) {
                             System.err.println("Brak macierzy A i B");
-                            continue;
                         } else
                             controller.calculateMatrixC();
                     } else if (inputString.equals("3")) {
                         if (controller.getModel().getMatrixC() == null) {
                             System.err.println("Brak macierzy C");
-                            continue;
                         } else
                             controller.transponeOutputMatix();
                     }
                     this.promptMenu();
-
                     break;
                 case "3":
                     this.promtpResults();
                     inputString = scanner.nextLine();
                     if (inputString.equals("1")) {
-                        this.showMatricesAB();
+                        if(controller.getModel().getMatrixA() == null){
+                            System.err.println("Brak macierzy A i B");
+                        }else
+                            this.showMatricesAB();
                     } else if (inputString.equals("2")) {
                         if (controller.getModel().getMatrixC() == null) {
                             System.err.println("Brak macierzy C");
@@ -87,7 +86,6 @@ public class View {
                             this.showMatrixC();
                     }
                     this.promptMenu();
-
                     break;
                 case "q":
                     break label;
@@ -125,43 +123,26 @@ public class View {
     }
 
     public void showMatricesAB() {
+        showMatrix("A", this.controller.getModel().getMatrixA());
+        showMatrix("B", this.controller.getModel().getMatrixB());
 
-        int[][] matrixA = this.controller.getModel().getMatrixA();
-        int[][] matrixB = this.controller.getModel().getMatrixB();
-        int rows = this.controller.getModel().getMatrixA().length;
-        int columns = this.controller.getModel().getMatrixA()[0].length;
-
-        System.out.println("Macierz A:");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                System.out.print(matrixA[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println("Macierz B:");
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < rows; j++) {
-                System.out.print(matrixB[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     public void showMatrixC() {
-        int[][] matrixC = this.controller.getModel().getMatrixC();
-        int rows = this.controller.getModel().getMatrixC().length;
-        int columns = this.controller.getModel().getMatrixC()[0].length;
+        showMatrix("C", this.controller.getModel().getMatrixC());
+    }
 
-        System.out.println("Macierz C:");
+    private static void showMatrix(String name, int[][] matrix){
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        System.out.println("Macierz " + name + ":");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                System.out.print(matrixC[i][j] + " ");
+                System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
         System.out.println();
     }
-
 }
